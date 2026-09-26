@@ -52,3 +52,11 @@ make check            # Full verification pipeline
 ```
 
 See CLAUDE.md for the authoritative rules and common commands.
+
+<!-- ios-sdk-t7:start -->
+## iOS (T7 runtime) — ignore unless you are about to develop, build, or run an iOS app
+
+If this session is not iOS (Xcode, xcodebuild, simulator, device, SwiftUI/UIKit app), skip this section.
+
+The iOS 26.5 simulator runtime lives on Ganidhuz T7, not the internal SSD. `xcodebuild` saying "iOS 26.5 is not installed" or a missing `iOS 26.5.simruntime` means the image is unmounted. Run `ios-sdk on` (skill `ios-sdk-t7`). Canonical copy: `~/.claude/skills/ios-sdk-t7`, symlinked across harnesses. Do not `xcodebuild -downloadPlatform iOS`, `-importPlatform`, or `simctl runtime add` (copies ~8GB onto `/` → ENOSPC). `eval "$(ios-sdk env)"` keeps TMP/DerivedData on the image.
+<!-- ios-sdk-t7:end -->
